@@ -1,5 +1,8 @@
 from flask import render_template, jsonify, request
 from app import app
+from app import parser
+from app import request_google_api as rga
+import sys
 
 @app.route('/')
 def index():
@@ -8,10 +11,14 @@ def index():
         
 @app.route('/ajax', methods = ['POST'])
 def ajax_request():
-    q = request.form['question']
+
+    question = request.form['question']
+    p = parser.Parser(question)
+    g = rga.RequestGoogleApi(p.parsed_string)
+
     data = {
-        "question": q,
-        "response": "Salut c'est cool"
+        "question": question,
+        "response": g.adress
     }
     return jsonify(data)
     

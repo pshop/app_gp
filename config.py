@@ -1,11 +1,10 @@
 class ConfigGoogle():
     GOOGLE_API_ARGS = {
-        "input": None,
-        "types": "geocode",
+        "query": None,
         "key": "AIzaSyD9OHJRmPNC4QXz_fKRLLHepBpIOA0v8-I"
     }
 
-    GOOGLE_API_BASE_URL = "https://maps.googleapis.com/maps/api/place/autocomplete/json?"
+    GOOGLE_API_BASE_URL = "https://maps.googleapis.com/maps/api/place/textsearch/json"
 
 
 class ConfigWiki():

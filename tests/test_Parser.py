@@ -1,5 +1,5 @@
 # -*-coding:utf-8 -*
-from app.static.Parser import *
+from app.parser import *
 
 def test_parser():
     my_parser = Parser("Salut GrandpyBot, tu vas bien ? Connais tu la rue de la servette à genève ?")
