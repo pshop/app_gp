@@ -26,7 +26,7 @@
                 {
                     const response = JSON.parse(req.responseText);
                     console.log(response);
-                    injectQR(response.question, response.response)
+                    injectQR(response.question, response.response1, response.response2)
                 }
             }
         });
@@ -39,7 +39,7 @@
         return false;
     }
 
-    function injectQR(question, response){
+    function injectQR(question, response1, response2){
         const container = document.createElement("div");
         container.className = "qr";
 
@@ -47,12 +47,17 @@
         contQuestion.className = "q";
         contQuestion.innerHTML = question;
 
-        const contResponse = document.createElement("div");
-        contResponse.className = "r" ;
-        contResponse.innerHTML = response;
+        const constReponse1 = document.createElement("div");
+        constReponse1.className = "r" ;
+        constReponse1.innerHTML = response1;
+
+        const constReponse2 = document.createElement("div");
+        constReponse2.className = "r" ;
+        constReponse2.innerHTML = response2;
 
         container.appendChild(contQuestion);
-        container.appendChild(contResponse);
+        container.appendChild(constReponse1);
+        container.appendChild(constReponse2);
 
         document.querySelector("#chat").appendChild(container);
 

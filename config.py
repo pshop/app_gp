@@ -78,3 +78,8 @@ class ConfigParser():
                   "vivat", "vive", "vives", "vlan", "voici", "voilà", "vont", "vos", "votre", "vous",
                   "vous-mêmes", "vu", "vé", "vôtre", "vôtres", "w", "x", "y", "z", "zut", "à", "â", "ça", "ès",
                   "étaient", "étais", "était", "étant", "été", "être", "ô"]
+
+class ConfigGrandpy:
+    missunderstood1 = ["Oulala je me fais vieux, je n'ai pas compris la question.", "Qu'entends tu exactement par tartine de nutella ?",
+                    "Ma mémoire me joue des tours, je ne me souviens plus."]
+
