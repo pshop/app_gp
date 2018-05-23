@@ -7,43 +7,24 @@ class RequestWikiApi:
 
     @property
     def wiki_sum(self):
-
         wikipedia.set_lang('fr')
-        search = wikipedia.search(self.request)
 
-        try:
-            summary = wikipedia.summary(search[0])
-        except IndexError:
-            return False
-
-        splited_sum = summary.split('.')
-        wiki_sum = ''
-        i = 0
-
-        for sentence in splited_sum:
-            if i < 3:
-                wiki_sum += sentence + '.'
-                i += 1
-            else:
-                break
-
-        return wiki_sum
+        try :
+            w_summ = wikipedia.summary(self.request, sentences=3, auto_suggest=True)
+            return w_summ
+        except wikipedia.exceptions.DisambiguationError as e:
+            try :
+                w_summ = wikipedia.summary(e.options[1], sentences=3, auto_suggest=True)
+                return w_summ
+            except wikipedia.exceptions.DisambiguationError:
+                return None
 
 
 
 
 
 if __name__ == '__main__':
-    wikipedia.set_lang('fr')
-    search = wikipedia.search('sdfgsdfg')
-    summary = wikipedia.summary(search[0])
-    splited_sum = summary.split('.')
-    wiki_sum = ''
-    i = 0
-    for sentence in splited_sum:
-        if i < 3:
-            wiki_sum += sentence + '.'
-            i += 1
-        else:
-            break
-    print(wiki_sum)
+    req = [RequestWikiApi('louvre'), RequestWikiApi('wqewr'), RequestWikiApi('openclassroom')]
+    for r in req:
+        print('---------------------------')
+        print(r.wiki_sum)
