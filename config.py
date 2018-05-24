@@ -102,12 +102,24 @@ class ConfigGrandpy:
     missunderstood = [
         "Oulala je me fais vieux, je n'ai pas compris la question.",
         "Qu'entends tu exactement par tartine de nutella ?",
-        "Ma mémoire me joue des tours, je ne me souviens plus."
+        "Ma mémoire me joue des tours, je ne me souviens plus.",
+        "N'hésite pas à parler plus fort pour que je comprenne."
     ]
 
     wiki_no_result = [
         "C'est amusant parce que je savais quelque chose là dessus mais j'ai oublié",
         "Ma mémoire me joue des tours... De quoi on parlait déjà ?",
         "Et à propos de cacahuètes j'ai une superbe histoire à te raconter. Ah non."
+    ]
+
+    intro_wiki = [
+        "Oh et j'ai une superbe histoire à propos de ça, écoute :<br>",
+        "Ecoute ce que j'ai à te dire là dessus et tu comprendras pourquoi on m'appelle wikipiedia :<br>",
+        "J'ai fait un exposé là dessus quand j'étais en sixième, l'intro donnait ça :<br>"
+    ]
+    intro_address = [
+         "Mon petit, si mes souvenirs sont bons, c'est à cette adresse:<br>",
+         "Tu as grandis depuis la dernière fois non ?<br>L'adresse c'est ",
+         "Je veux bien de donner l'adresse mais tu restes manger un part de tarte.<br>Ok ? Alors c'est "
     ]
 

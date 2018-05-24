@@ -14,7 +14,7 @@ class AskGrandpy:
         google = g.RequestGoogleApi(self.question)
         google.req()
         if google.search and google.adress:
-            self.address = google.adress
+            self.address = f"{random.choice(ConfigGrandpy.intro_address)}{google.adress}."
             self.wiki = self.get_wiki(google.search)
         else:
             self.address = random.choice(ConfigGrandpy.missunderstood)
@@ -23,7 +23,7 @@ class AskGrandpy:
         wiki = w.RequestWikiApi(search)
 
         if wiki.summary_extr:
-            return wiki.summary_extr
+            return f"{random.choice(ConfigGrandpy.intro_wiki)}{wiki.summary_extr}"
         else:
             return random.choice(ConfigGrandpy.wiki_no_result)
 
