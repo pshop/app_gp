@@ -1,18 +1,37 @@
 class ConfigGoogle():
-    GOOGLE_API_ARGS = {
+    private_key = 'AIzaSyD9OHJRmPNC4QXz_fKRLLHepBpIOA0v8-I'
+
+    PLACES_API_ARGS = {
         "query": None,
-        "key": "AIzaSyD9OHJRmPNC4QXz_fKRLLHepBpIOA0v8-I"
+        "key": private_key
+    }
+    PLACES_API_BASE_URL = "https://maps.googleapis.com/maps/api/place/textsearch/json"
+
+    PLACES_NEAR_API_ARGS = {
+        "key" : private_key,
+        "location": None,
+        "keyword": None,
+        "rankby":"distance"
+    }
+    PLACES_NEAR_BASE_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
+
+    AUTOCOMP_API_ARGS = {
+        "key" : private_key,
+        "input" : None,
+        "location":None
     }
 
-    GOOGLE_API_BASE_URL = "https://maps.googleapis.com/maps/api/place/textsearch/json"
+    AUTOCOMP_BASE_URL = "https://maps.googleapis.com/maps/api/place/autocomplete/json"
 
+    LOCATE_API_KEY = {
+        "key":'AIzaSyA1fMrD5e0vqYGT2CKp9NbI7QhDBFlfxBg'
+    }
+    LOCATE_API_BASE_URL = "https://www.googleapis.com/geolocation/v1/geolocate"
 
-class ConfigWiki():
-    pass
 
 
 class ConfigParser():
-    STOP_WORDS = ["a", "où", "sais", "grandpybot", "grandpy", "papy", "vieux", "connait", "connais", "parler",
+    STOP_WORDS = ["a","stp","hasard", "où", "sais","adresse", "grandpybot", "grandpy", "papy", "vieux", "connait", "connais", "parler",
                   "entendu", "hello", "bonjour", "salut", "abord", "GrandpyBot", "absolument", "afin", "ah",
                   "ai", "aie", "ailleurs", "ainsi", "ait", "allaient", "allo", "allons", "allô", "alors",
                   "anterieur", "anterieure", "anterieures", "apres", "après", "as", "assez", "attendu", "au",

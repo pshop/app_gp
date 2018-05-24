@@ -6,7 +6,7 @@ class RequestWikiApi:
         self.request = request
 
     @property
-    def wiki_sum(self):
+    def summary_extr(self):
         wikipedia.set_lang('fr')
 
         try :
@@ -18,13 +18,11 @@ class RequestWikiApi:
                 return w_summ
             except wikipedia.exceptions.DisambiguationError:
                 return None
-
-
-
-
+        except (wikipedia.exceptions.PageError , ValueError):
+            return None
 
 if __name__ == '__main__':
     req = [RequestWikiApi('louvre'), RequestWikiApi('wqewr'), RequestWikiApi('openclassroom')]
     for r in req:
         print('---------------------------')
-        print(r.wiki_sum)
+        print(r.summary_extr)

@@ -14,28 +14,20 @@ def index():
         
 @app.route('/ajax', methods = ['POST'])
 def ajax_request():
-    didnt_understant = 0
+
     question = request.form['question']
     p = parser.Parser(question)
     g = google.RequestGoogleApi(p.parsed_string)
-    w = wiki.RequestWikiApi(g.search_term)
+    w = wiki.RequestWikiApi(g.search)
 
 
-    if g.adress:
-        data = {
-            "question": question,
-            "response1": g.adress,
-            "response2": w.wiki_sum
-        }
-        didnt_understant = 0
-        return jsonify(data)
-    else:
-        data = {
-            "question": question,
-            "response1": random.choice(grandpy.missunderstood1),
-            "response2": ''
-        }
-        didnt_understant += 1
+    
+    data = {
+        "question": question,
+        "response1": "adresse",
+        "response2": "résumé wikipedia"
+    }
+    return jsonify(data)
     
     
 if __name__ == "__main__":

@@ -3,6 +3,8 @@
 import re
 from config import ConfigParser
 
+
+
 class Parser:
     def __init__(self, string_to_parse):
         self.string_to_parse = string_to_parse
@@ -33,5 +35,10 @@ class Parser:
 
 
 if __name__ == "__main__":
-    test = Parser("quelle est l'adresse de la poste la plus proche ?")
-    print(test.parsed_string)
+    test = [Parser("quelle est l'adresse de la poste la plus proche ?"),
+    Parser("salut grandpy comment ça va ? Tu sais ou est la tour eiffel par hasard ?"),
+    Parser("Hello quelle est l'adresse de openclassroom stp?")]
+    
+    for t in test:
+        print('-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-')
+        print(t.parsed_string)
