@@ -1,11 +1,6 @@
 from flask import render_template, jsonify, request
 from app import app
-from app import parser
-from app import request_google_api as google
-from app import request_wiki_api as wiki
-from config import ConfigGrandpy as grandpy
-import sys
-import random
+from app import AskGrandpy as ag
 
 @app.route('/')
 def index():
@@ -16,16 +11,13 @@ def index():
 def ajax_request():
 
     question = request.form['question']
-    p = parser.Parser(question)
-    g = google.RequestGoogleApi(p.parsed_string)
-    w = wiki.RequestWikiApi(g.search)
-
-
+    answers = ag.AskGrandpy(question)
+    answers.get_answer()
     
     data = {
         "question": question,
-        "response1": "adresse",
-        "response2": "résumé wikipedia"
+        "response1": answers.address,
+        "response2": answers.wiki
     }
     return jsonify(data)
     

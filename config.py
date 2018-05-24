@@ -99,6 +99,15 @@ class ConfigParser():
                   "étaient", "étais", "était", "étant", "été", "être", "ô"]
 
 class ConfigGrandpy:
-    missunderstood1 = ["Oulala je me fais vieux, je n'ai pas compris la question.", "Qu'entends tu exactement par tartine de nutella ?",
-                    "Ma mémoire me joue des tours, je ne me souviens plus."]
+    missunderstood = [
+        "Oulala je me fais vieux, je n'ai pas compris la question.",
+        "Qu'entends tu exactement par tartine de nutella ?",
+        "Ma mémoire me joue des tours, je ne me souviens plus."
+    ]
+
+    wiki_no_result = [
+        "C'est amusant parce que je savais quelque chose là dessus mais j'ai oublié",
+        "Ma mémoire me joue des tours... De quoi on parlait déjà ?",
+        "Et à propos de cacahuètes j'ai une superbe histoire à te raconter. Ah non."
+    ]
 

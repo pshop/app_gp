@@ -3,6 +3,7 @@ import requests
 from config import ConfigGoogle as CG
 import sys
 
+
 class RequestGoogleApi:
 
     def __init__(self, question):
@@ -36,6 +37,7 @@ class RequestGoogleApi:
         else:
             return "La localisationd de l'appareil à échoué"
 
+
     def req_autocomp_place(self):
 
         CG.AUTOCOMP_API_ARGS['input'] = self.question
@@ -49,6 +51,7 @@ class RequestGoogleApi:
         r = requests.post(CG.AUTOCOMP_BASE_URL, params= CG.AUTOCOMP_API_ARGS)
 
         return r.json()
+
 
     def get_loc(self):
         """
@@ -79,9 +82,7 @@ class RequestGoogleApi:
         if req['status'] == 'OK':
             """ req_place() SUCCEED """
             self.adress  = req['results'][0]['formatted_address']
-            print(f"adresse : {self.adress}")
             self.search = req['results'][0]['name']
-            print(f"recherche : {self.search}")
 
         else:
             """ req_place() FAILED """
@@ -90,11 +91,8 @@ class RequestGoogleApi:
             if req['status'] == 'OK':
                 """ req_place_nearby() SUCCEED """
                 self.adress = req["results"][0]['vicinity']
-                print(f"adresse2 : {self.adress}")
                 self.search = self.question
-                print(f"recherche2 : {self.search}")
                 
-
             else:
                 """ req_place_nearby() FAILED """
                 req = self.req_autocomp_place()
@@ -105,9 +103,7 @@ class RequestGoogleApi:
 
                     if req['status'] == 'OK':
                         self.adress = req['results'][0]['formatted_address']
-                        print(f"adresse3 : {self.adress}")
                         self.search = self.question
-                        print(f"recherche3 : {self.search}")
 
                     else:
                         return None
