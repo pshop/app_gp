@@ -103,7 +103,9 @@ class ConfigGrandpy:
         "Oulala je me fais vieux, je n'ai pas compris la question.",
         "Qu'entends tu exactement par tartine de nutella ?",
         "Ma mémoire me joue des tours, je ne me souviens plus.",
-        "N'hésite pas à parler plus fort pour que je comprenne."
+        "N'hésite pas à parler plus fort pour que je comprenne.",
+        "Si c'était la question, oui je vais bien, merci :)",
+        "N'hésite pas à simplifier ta question au maximum, j'ai un petit cerveau."
     ]
 
     wiki_no_result = [
