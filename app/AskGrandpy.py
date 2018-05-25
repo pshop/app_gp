@@ -9,6 +9,7 @@ class AskGrandpy:
         self.question = question
         self.address = ''
         self.wiki = ''
+        self.error = False
 
     def get_answer(self):
         google = g.RequestGoogleApi(self.question)
@@ -16,8 +17,11 @@ class AskGrandpy:
         if google.search and google.adress:
             self.address = f"{random.choice(ConfigGrandpy.intro_address)}{google.adress}."
             self.wiki = self.get_wiki(google.search)
+            self.error = False
         else:
             self.address = random.choice(ConfigGrandpy.missunderstood)
+            self.wiki = 'tactical dot => .'
+            self.error = True
 
     def get_wiki(self, search):
         wiki = w.RequestWikiApi(search)
