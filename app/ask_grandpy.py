@@ -20,6 +20,7 @@ class AskGrandpy:
             self.address = f"{random.choice(ConfigGrandpy.intro_address)}{google.adress}."
             self.wiki = self.get_wiki(google.search)
             self.error = False
+            return google.adress
         else:
             self.address = random.choice(ConfigGrandpy.missunderstood)
             self.wiki = 'tactical dot => .'

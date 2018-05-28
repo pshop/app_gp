@@ -3,10 +3,16 @@ import wikipedia
 class RequestWikiApi:
     
     def __init__(self, request):
+        """
+        request is a str that will be used in the method summary_extr 
+        TESTED
+        """
         self.request = str(request)
 
     @property
     def summary_extr(self):
+        """ Returns the first three sentences of the wikipedia article of the str(request)
+        argument, if Something goes wrong or API is Down, returns null """
         wikipedia.set_lang('fr')
 
         try :

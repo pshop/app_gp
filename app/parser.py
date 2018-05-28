@@ -7,6 +7,11 @@ from config import ConfigParser
 
 class Parser:
     def __init__(self, string_to_parse):
+        """
+            gets a string written in french and takes off
+            irrelevant words, it has to have no falts.
+            TESTED
+        """
         self.string_to_parse = str(string_to_parse)
         self.final_answer = str()
 
