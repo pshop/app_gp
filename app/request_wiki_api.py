@@ -3,7 +3,7 @@ import wikipedia
 class RequestWikiApi:
     
     def __init__(self, request):
-        self.request = request
+        self.request = str(request)
 
     @property
     def summary_extr(self):
@@ -20,9 +20,3 @@ class RequestWikiApi:
                 return None
         except (wikipedia.exceptions.PageError , ValueError):
             return None
-
-if __name__ == '__main__':
-    req = [RequestWikiApi('louvre'), RequestWikiApi('wqewr'), RequestWikiApi('openclassroom')]
-    for r in req:
-        print('---------------------------')
-        print(r.summary_extr)

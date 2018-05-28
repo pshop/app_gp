@@ -1,6 +1,7 @@
 from flask import render_template, jsonify, request
 from app import app
-from app import AskGrandpy as ag
+from app import ask_grandpy as ag
+from app import parser as p
 
 @app.route('/')
 def index():

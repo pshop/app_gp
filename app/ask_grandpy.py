@@ -1,18 +1,20 @@
 from app import request_google_api as g
 from app import request_wiki_api as w
+from app import parser as p
 from config import ConfigGrandpy
 import random
 
 class AskGrandpy:
     
     def __init__(self, question):
-        self.question = question
+        self.question = str(question)
         self.address = ''
         self.wiki = ''
         self.error = False
 
     def get_answer(self):
-        google = g.RequestGoogleApi(self.question)
+        
+        google = g.RequestGoogleApi(p.Parser(self.question).parsed_string)
         google.req()
         if google.search and google.adress:
             self.address = f"{random.choice(ConfigGrandpy.intro_address)}{google.adress}."

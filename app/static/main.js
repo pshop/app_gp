@@ -3,9 +3,12 @@ const inputQuestion = document.querySelector("#question");
 const containerChat = document.querySelector("#chat");
 const animation = document.querySelector("#animation");
 
+// Action when i click the button
 buttonSubmit.addEventListener("click", ()=>{
     sendMsg();
 });
+
+// Action when i press Return button
 document.addEventListener("keydown", (e)=>{
     if (e.key === "Enter"){
         e.preventDefault();
