@@ -1,3 +1,4 @@
+// get template (index.html) elements
 const buttonSubmit = document.querySelector("#submit");
 const inputQuestion = document.querySelector("#question");
 const containerChat = document.querySelector("#chat");
@@ -16,32 +17,48 @@ document.addEventListener("keydown", (e)=>{
     }
 });
 
+//
 function sendMsg() {
+    // get and clear content of input question
     const msgClient = clearTextArea(inputQuestion);
 
+    // create a div to caontain the user question
     const msgClientElementContainer = document.createElement("div");
+    // add class container
     msgClientElementContainer.className = "q-container";
 
+    // prepare the question to inject in the question container
     const msgClientElement = document.createElement("div");
     msgClientElement.className = "q" ;
     msgClientElement.innerText = msgClient;
 
+    // puts the question class 'q' in the container 'q-container'
     msgClientElementContainer.appendChild(msgClientElement);
 
+    // Put the client's question in the chat container
     containerChat.appendChild(msgClientElementContainer);
 
+    // delete the bot 'speak' animation state
     animation.classList.remove("speak");
+    // run the 'wait' animation state
     animation.classList.add("wait");
 
+    // scroll down the {containerChat} automaticaly
     scrollDown();
 
+    // init the http request to the server and inject server answers in the {containerChat}
     loadXMLDoc(msgClient);
 }
 
+// init the http request to the server and inject server answers in the {containerChat}
 function loadXMLDoc(value)
 {
+    // create a new XMLHttpRequest object
     const req = new XMLHttpRequest();
+
+    // listen the status change during the request to the server
     req.addEventListener("readystatechange", ()=>{
+        // when we get the answer 4 (meaning everything went well)
         if (req.readyState === 4)
         {
             if (req.status != 200)
@@ -50,28 +67,32 @@ function loadXMLDoc(value)
             }
             else
             {
+                // get {.responseText} of the {req} object and make it a JSON
                 const response = JSON.parse(req.responseText);
-                console.log(response);
+
+                //inject values got from the server and put it in {containerChat}
                 injectQR(response.response1, response.image, response.response2);
+
+                // update bot animation state
                 animation.classList.remove("wait");
                 animation.classList.add("speak");
             }
         }
-    }, true);
+    }, true); // asynchronous request
 
-    req.open('POST', '/ajax');
-    req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    const postVars = 'question='+value;
+    // init requets
+        req.open('POST', '/ajax');
+        req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        // built the string send to the server with the textarea value
+        const postVars = 'question='+value;
+
+    // send the request
     req.send(postVars);
     
     return false;
 }
 
-/**
- * @param response1 string
- * @param image string - maps url
- * @param response2 string
- */
+
 function injectQR(response1, image, response2){
     // response 1
     const constReponse1ElementContainer = document.createElement("div");
@@ -112,14 +133,12 @@ function injectQR(response1, image, response2){
     scrollDown();
  }
 
-/**
- * @return string - return content of area
- * @param areaElement HTMLAreaElement - area ellement to clear. default: area[0] in dom
- */
-function clearTextArea(areaElement= document.querySelector("textarea")) {
+// return content of a text area element
+// and clear it
+function clearTextArea(areaElement = document.querySelector("textarea")) {
     const contentToReturn = areaElement.value;
     areaElement.value = "";
-    return contentToReturn.replace(/</g,"&lt;").replace(/>/g,"&gt;");;
+    return contentToReturn.replace(/</g,"&lt;").replace(/>/g,"&gt;"); // prevent script injection
  }
 
  function scrollDown() {
