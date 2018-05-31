@@ -11,7 +11,6 @@ class RequestGoogleApi:
         self.adress = None
         self.search = None
 
-
     def req_place(self, test = False):
         """
         Makes a basic search on google map, work for stecific searches like 'tour eiffel'
@@ -117,6 +116,7 @@ class RequestGoogleApi:
             """ req_place() SUCCEED """
             self.adress  = req['results'][0]['formatted_address']
             self.search = req['results'][0]['name']
+            print("trouvé avec req_place", file = sys.stdout)
             return None
 
         else:
@@ -130,6 +130,7 @@ class RequestGoogleApi:
                 """ req_place_nearby() SUCCEED """
                 self.adress = req["results"][0]['vicinity']
                 self.search = self.question
+                print("Trouvé avec place_nearby", file = sys.stdout)
                 
             else:
                 """ req_place_nearby() FAILED """
@@ -141,6 +142,7 @@ class RequestGoogleApi:
                 if req['status'] == 'OK':
                     self.question = req['predictions'][0]['description']
                     req = self.req_place()
+                    print("dernier", file=sys.stdout)
 
                     if req['status'] == 'OK':
                         self.adress = req['results'][0]['formatted_address']

@@ -26,7 +26,7 @@ class Parser:
         Get the string send by the user and split the words in a list.
         """
         my_string = my_string.lower()
-        my_string = re.sub("[^a-zéèê\\s]", " ", my_string)
+        my_string = re.sub("[^a-z0-9éèê\\s]", " ", my_string)
         my_list = my_string.split(' ')
         my_list = [word for word in my_list if word != '']
         return my_list
