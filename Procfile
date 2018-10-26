@@ -1,1 +1,1 @@
-web: gunicorn grand:app
+web: gunicorn app_gp:app
