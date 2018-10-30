@@ -1,7 +1,7 @@
 import os
 
-
-LOG_TO_STDOUT = os.environ.get('LOG_TO_STDOUT')
+class Config():
+    LOG_TO_STDOUT = os.environ.get('LOG_TO_STDOUT')
 
 class ConfigGoogle():
     private_key = 'AIzaSyD9OHJRmPNC4QXz_fKRLLHepBpIOA0v8-I'
