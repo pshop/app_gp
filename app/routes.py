@@ -19,7 +19,7 @@ def ajax_request():
     
     data["question"] = question
     data["response1"] = answers.address
-    print(answers.address, file =  sys.stdout)
+    print(answers.address, file = sys.stdout)
     data["response2"] = answers.wiki
 
     if answers.error :
