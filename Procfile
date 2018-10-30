@@ -1,1 +1,1 @@
-web: flask translate compile; gunicorn app_gp:grand
+web: gunicorn app_gp:app
