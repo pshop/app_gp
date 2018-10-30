@@ -1,6 +1,4 @@
-from flask import Flask
-import requests
+from app_gp import app
 
-app = Flask(__name__)
-
-from app import routes
+if __name__ == "__main__":
+    app.run()
