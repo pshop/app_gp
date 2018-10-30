@@ -1,1 +1,1 @@
-pip install -r requirement.txtgi
+pip install -r requirement.txt
